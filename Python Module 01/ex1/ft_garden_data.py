@@ -1,4 +1,7 @@
 class Plant():
+    """this is a constructor it runs when a new object of a class is created
+       its goal is the initialize the objects attributes.
+    """
     def __init__(self, name: str, height: int, age: int):
         self.name = name
         self.height = height
