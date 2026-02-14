@@ -1,8 +1,8 @@
 class Plant:
- '''
+    '''
      This is the base class for different types of plants.
      inits attributes.
- '''   
+     '''
     def __init__(self, name: str, height: int, age: int):
         self.name = name
         self.height = height
@@ -18,14 +18,14 @@ class Flower(Plant):
         self.color = color
         print(f"{self.name} (Flower): {self.height}cm, "
               f"{self.age} days, {self.color} color")
-        
+
     def bloom(self):
         print(f"{self.name} is blooming beautifully!\n")
 
 
 class Tree(Plant):
     '''
-       Tree class inheriting from Plant 
+       Tree class inheriting from Plant
     '''
     def __init__(self, name, height, age, trunk_diameter):
         super().__init__(name, height, age)
