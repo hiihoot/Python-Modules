@@ -1,4 +1,8 @@
-def test_error_types():
+def garden_operations():
+    '''
+    testing some error types using some common
+    builtin Exceptions
+    '''
     try:
         print("Testing ValueError...")
         a = "abc"
@@ -34,12 +38,16 @@ def test_error_types():
 
         open("missing.txt", "r")
         plant = {"Flower": "Rose"}
-        plant["missing_plat"]
-    except (ValueError, KeyError, ValueError):
+        plant["missing_plant"]
+    except (ValueError, KeyError):
         print("Caught an error, but program continues!\n")
 
 
-if __name__ == "__main__":
+def test_error_types():
     print("=== Garden Error Types Demo ===\n")
-    test_error_types()
+    garden_operations()
     print("All error types tested successfully!")
+
+
+if __name__ == "__main__":
+    test_error_types()

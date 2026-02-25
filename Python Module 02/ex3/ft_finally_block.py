@@ -1,19 +1,27 @@
 
 def water_plants(plant_list):
+    '''
+    a function that simulates watering plants if there
+    are some
+    :param plant_list: a list
+    '''
     try:
         print("Opening watering system")
         for plant in plant_list:
             if plant:
                 print(f"Watering {plant}")
             else:
-                0/0
-    except Exception:
-        print("Error: Cannot water None - Invalid plant!")
+                raise ValueError("Cannot water None - Invalid plant!")
+    except ValueError as e:
+        print(f"Error: {e}")
     finally:
         print("Closing watering system (cleanup)")
 
 
 def test_watering_system():
+    '''
+    test_watering_system for testing purpose
+    '''
     print("Testing normal watering...")
     plants = ["tomato", "lettuce", "carrots"]
     water_plants(plants)

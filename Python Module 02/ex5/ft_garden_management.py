@@ -1,8 +1,34 @@
-class GardenManager(Exception):
+class GardenError(Exception):
+    '''
+    Base class for all Garden related erros
+    '''
+    pass
+
+
+class PlantError(GardenError):
+    '''
+    Raises when there is a plant related error
+    '''
+    pass
+
+
+class WaterError(GardenError):
+    '''
+    Raises when there is a plant related error
+    '''
+    pass
+
+
+class GardenManager:
+    '''
+    Manages operations like adding, watering, checking health of plants
+    '''
     def __init__(self, plant_list: list):
         self.plant_list = plant_list
         print("=== Garden Management System ===\n")
-
+    '''
+    Methode adding plants
+    '''
     def add_plants(self):
         try:
             print("Adding plants to garden...")
@@ -10,11 +36,13 @@ class GardenManager(Exception):
                 if plant != "":
                     print(f"added {plant} successfully")
                 else:
-                    raise ValueError("Error adding plant: "
+                    raise PlantError("Error adding plant: "
                                      "Plant name cannot be empty!\n")
-        except ValueError as e:
+        except PlantError as e:
             print(e)
-
+    '''
+    Methode for watering plants
+    '''
     def water_plants(self):
         try:
             print("Watering plants...")
@@ -24,35 +52,44 @@ class GardenManager(Exception):
                     print(f"Watering {plant} - success")
         finally:
             print("Closing watering system (cleanup)\n")
-
+    '''
+    this checks plant health
+    '''
     def check_plant_health(self, plant_name, water_level, sunlight_hours):
         try:
             if plant_name == "":
-                raise ValueError("Error: Plant name cannot be empty!\n")
-            elif not (water_level >= 1 and water_level <= 10):
-                if water_level > 10:
-                    raise ValueError(f"Error checking {plant_name}: "
-                                     f"Water level {water_level} "
-                                     f"is too high (max 10)\n")
-                else:
-                    raise ValueError(f"Error checking {plant_name}:"
-                                     f" Water level {water_level} "
-                                     f"is too low (min 1)\n")
-            elif not (sunlight_hours >= 2 and sunlight_hours <= 12):
-                if sunlight_hours > 10:
-                    raise ValueError(f"Error checking {plant_name}:"
-                                     f"Sunlight hours {sunlight_hours} "
-                                     f"is too high (max 10)\n")
-                else:
-                    raise ValueError(f"Error checking {plant_name}: "
-                                     f"Sunlight hours {sunlight_hours} "
-                                     f"is too low (min 2)")
-            else:
-                print(f"Plant '{plant_name}' is healthy "
-                      f"(water: {water_level}, sun: {sunlight_hours})")
-        except ValueError as e:
+                raise PlantError("Plant name cannot be empty!\n")
+        except PlantError as e:
+            print(f"Error: {e}")
+        try:
+            if water_level > 10:
+                raise WaterError(f"Error checking {plant_name}: "
+                                 f"Water level {water_level} "
+                                 "is too high (max 10)\n")
+            elif water_level < 1:
+                raise WaterError(f"Error checking {plant_name}:"
+                                 f" Water level {water_level} "
+                                 "is too low (min 1)\n")
+        except WaterError as e:
             print(e)
-
+        try:
+            if sunlight_hours > 12:
+                raise PlantError(f"Error checking {plant_name}:"
+                                 f"Sunlight hours {sunlight_hours} "
+                                 "is too high (max 12)\n")
+            elif sunlight_hours < 2:
+                raise PlantError(f"Error checking {plant_name}: "
+                                 f"Sunlight hours {sunlight_hours} "
+                                 "is too low (min 2)")
+            if plant_name == "tomato":
+                print(f"{plant_name}: healthy "
+                      f"(water: {water_level}, sun: {sunlight_hours})")
+        except PlantError as e:
+            print(e)
+    '''
+    just like different error ex1 but this for just water so i can
+    match the subject example output
+    '''
     def checking_erros(self):
         try:
             print("Testing error recovery...")
