@@ -13,7 +13,7 @@ def main():
         for i in range(1, argc):
             try:
                 number = int(argv[i])
-                scores.append(number)
+                scores += [number]
             except ValueError as e:
                 print(f"Error: {e}")
         if (len(scores) > 0):

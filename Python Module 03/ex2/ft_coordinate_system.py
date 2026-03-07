@@ -2,7 +2,7 @@ import sys
 import math
 
 
-def distance_calculator(x1, y1, z1, x2, y2, z2):
+def distance_calculator(x1: int, y1: int, z1: int, x2: int, y2: int, z2: int):
     return math.sqrt((x2-x1)**2 + (y2-y1)**2 + (z2-z1)**2)
 
 
