@@ -1,0 +1,67 @@
+If needed, ask the assessed person to help you with the tests.
+Does the program correctly implement ALL the following features?
+
+    File named stream_processor.py exists and can be imported
+    All code includes comprehensive type annotations (typing imports, parameter types, return types)
+    Proper imports: from abc import ABC, abstractmethod and from typing import Any, List, Dict, Union, Optional
+    DataProcessor is an abstract base class (inherits from ABC)
+    DataProcessor has @abstractmethod decorators on process() and validate() methods
+    Method signatures match requirements:
+        process(self, data: Any) -> str
+        validate(self, data: Any) -> bool
+        format_output(self, result: str) -> str
+    NumericProcessor(), TextProcessor(), LogProcessor() classes inherit from DataProcessor (no constructor parameters required)
+    All subclasses properly override the abstract methods with specialized behavior
+    NumericProcessor handles numeric data (lists, individual numbers)
+    TextProcessor handles string data (character/word counting)
+    LogProcessor handles log entries (extracts log levels, generates alerts)
+    Demonstrates polymorphic usage (same method calls on different objects)
+    Run python3 stream_processor.py and verify the output matches expected format
+    Ask the assessed person to explain what method overriding is and why abstract base classes are useful
+
+
+
+If needed, ask the assessed person to help you with the tests.
+Does the program correctly implement ALL the following features?
+
+    File named data_stream.py exists and can be imported
+    All code includes comprehensive type annotations (typing imports, parameter types, return types)
+    Proper imports: from abc import ABC, abstractmethod and from typing import Any, List, Dict, Union, Optional
+    DataStream is an abstract base class (inherits from ABC)
+    DataStream has @abstractmethod decorator on process_batch() method
+    Method signatures match requirements:
+        process_batch(self, data_batch: List[Any]) -> str (abstract)
+        filter_data(self, data_batch: List[Any], criteria: Optional[str] = None) -> List[Any]
+        get_stats(self) -> Dict[str, Union[str, int, float]]
+    SensorStream(stream_id), TransactionStream(stream_id), EventStream(stream_id) classes inherit from DataStream
+    All subclasses properly override the abstract method and optionally override other methods with domain-specific behavior
+    SensorStream processes temperature/sensor data with alerts for extreme values
+    TransactionStream processes buy/sell operations with net flow calculations
+    EventStream processes system events with error detection and categorization
+    StreamProcessor class can handle multiple stream types polymorphically
+    Demonstrates filtering capabilities specific to each stream type
+    Run python3 data_stream.py and verify the output shows polymorphic processing
+    Does the implementation include comprehensive error handling and recovery mechanisms?
+    Ask the assessed person to explain how polymorphism enables the StreamProcessor to handle different stream types
+
+
+If needed, ask the assessed person to help you with the tests.
+Does the program correctly implement ALL the following features?
+
+    File named nexus_pipeline.py exists and can be imported
+    All code includes comprehensive type annotations (typing imports, parameter types, return types)
+    Proper imports: from abc import ABC, abstractmethod, from typing import Any, List, Dict, Union, Optional, Protocol, and collections
+    ProcessingPipeline is an abstract base class with configurable stages
+    Stage classes (InputStage, TransformStage, OutputStage) implement process(self, data: Any) -> Any method (no constructor parameters required)
+    Stages can use Protocol or duck typing (must have a process() method)
+    JSONAdapter(pipeline_id), CSVAdapter(pipeline_id), StreamAdapter(pipeline_id) inherit from ProcessingPipeline
+    Each adapter overrides the process(self, data: Any) -> Union[str, Any] method for format-specific handling
+    NexusManager can orchestrate multiple pipelines polymorphically
+    Demonstrates pipeline chaining functionality
+    Includes error recovery simulation
+    All classes show proper method overriding with meaningful specialization
+    Run python3 nexus_pipeline.py and verify complex pipeline processing works
+    IMPORTANT: Refer to the UML class diagram in the subject to verify the architecture matches expectations
+    Verify that stages implement the Protocol (duck typing) while adapters inherit from ProcessingPipeline
+    Ask the assessed person to explain how the pipeline system demonstrates both inheritance and polymorphism
+    Ask them to explain the difference between Protocol (duck typing) and ABC (abstract base class) in this context
