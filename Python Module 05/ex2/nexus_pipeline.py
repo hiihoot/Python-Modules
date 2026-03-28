@@ -9,7 +9,7 @@ class ProcessingStage(Protocol):
         ...
 
 
-class InputStage:
+class InputStage:8
     """Stage 1: Input validation and parsing"""
 
     def process(self, data: Any) -> Any:

@@ -121,7 +121,7 @@ def main() -> None:
     log_proc = LogProcessor()
 
     data: Dict = {
-        "data_num": 1,
+        "data_num": [1, 1],
         "data_text": "Hello Nexus World",
         "data_log": "ERROR: Connection timeout"
     }

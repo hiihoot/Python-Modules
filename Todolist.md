@@ -27,13 +27,13 @@ P02
 - [DONE] ft_garden_management.py
 
 P03
-- [] ft_command_quest.py
-- [] ft_score_analytics.py
-- [] ft_coordinate_system.py
-- [] ft_achievement_tracker.py
-- [] ft_inventory_system.py
-- [] ft_data_stream.py
-- [] ft_analytics_dashboard.py
+- [DONE] ft_command_quest.py
+- [DONE] ft_score_analytics.py
+- [DONE] ft_coordinate_system.py
+- [DONE] ft_achievement_tracker.py
+- [DONE] ft_inventory_system.py
+- [DONE] ft_data_stream.py
+- [DONE] ft_analytics_dashboard.py
 
 P04
 - [] ft_ancient_text.py
