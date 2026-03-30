@@ -1,8 +1,8 @@
-from validator import validate_ingredients as validator
-
-
 def record_spell(spell_name: str, ingredients: str) -> str:
-    if validator(ingredients):
-        return f"Spell recorded: {spell_name} ({validator(ingredients)})"
+    from alchemy.grimoire.validator import validate_ingredients
+    if validate_ingredients(ingredients):
+        return (f"Spell recorded: {spell_name} "
+                f"({validate_ingredients(ingredients)})")
     else:
-        return f"Spell recorded: {spell_name} ({validator(ingredients)})"
+        return (f"Spell recorded: {spell_name} "
+                f"({validate_ingredients(ingredients)})")

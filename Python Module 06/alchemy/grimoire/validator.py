@@ -7,12 +7,8 @@ def validate_ingredients(ingredients: str) -> str:
         "earth",
         "air"
     ]
-    ingredients.lower()
-    for element in elements:
-        if ingredients in element:
-            return f"{ingredients} - Valid"
-        else:
+
+    for item in ingredients.split():
+        if item not in elements:
             return f"{ingredients} - INVALID"
-
-
-print(validate_ingredients("fire air"))
+    return f"{ingredients} - VALID"
