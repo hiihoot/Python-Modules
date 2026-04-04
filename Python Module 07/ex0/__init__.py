@@ -1,8 +1,4 @@
 from .CreatureCard import CreatureCard
 from .Card import Card
 
-
-stuff = {
-    CreatureCard,
-    Card
-}
+__all__ = ["CreatureCard", "Card"]
