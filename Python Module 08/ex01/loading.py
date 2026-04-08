@@ -1,24 +1,29 @@
 import importlib
+import sys
 
 
-def main():
-    modules = ["pandas", "requests", "matplotlib", "numpy"]
-    text = {
+def main() -> None:
+    mod = {
         "pandas": "Data manipulation ready",
-        "requests": "Network access read",
+        "requests": "Network access ready",
         "matplotlib": "Visualization ready",
         "numpy": "Numerical computation ready"
     }
 
     print("LOADING STATUS: Loading programs...\n")
+    missing: list[str] = []
 
-    for m in modules:
+    for m, t in mod.items():
         try:
             module = importlib.import_module(m)
-            print(f"[OK] {module.__name__} ({module.__version__}) - {text[m]}")
+            print(f"[OK] {module.__name__} ({module.__version__}) - {t}")
         except ModuleNotFoundError:
-            print("Use 'pip install -r requirements.txt' or 'poetry install'")
-            return  # Exit if any module is missing
+            missing.append(m)
+
+    if missing:
+        print("You need this am3lm:", ", ".join(missing))
+        print("Use 'pip install -r requirements.txt' or 'poetry install'")
+        sys.exit(1)
 
     import matplotlib.pyplot as plt
     import numpy as np
