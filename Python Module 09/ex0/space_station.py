@@ -37,10 +37,7 @@ def main():
         status = "Operational" if valid.is_operational else "Down"
         print(f"Status: {status}")
         print("========================================")
-    except ValidationError as e:
-        print("Expected validation error:")
-        print(e.errors()[0]["msg"])
-    try:
+
         valid = SpaceStation(
             station_id="QCH1819",
             name="IDeep Space Observatory",
