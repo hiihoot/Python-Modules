@@ -11,7 +11,6 @@ class ContactType(Enum):
     TELEPATHIC = "telepathic"
 
 
-
 class AlienContact(BaseModel):
     contact_id: str = Field(min_length=5, max_length=15)
     timestamp: datetime
@@ -47,7 +46,6 @@ class AlienContact(BaseModel):
         return self
 
 
-
 def main():
     print("Alien Contact Log Validation")
     print("======================================")
@@ -60,10 +58,10 @@ def main():
             signal_strength=8.5,
             duration_minutes=45,
             witness_count=5,
-            message_received= "Greetings from Zeta Reticuli",
+            message_received="Greetings from Zeta Reticuli",
             is_verified=False
         )
-    
+
         print("Valid contact report:")
         print(f"ID: {valid.contact_id}")
         print(f"Type: {valid.contact_type.value}")
@@ -76,7 +74,7 @@ def main():
         print("======================================")
     except ValidationError as e:
         print(e.errors()[0]["msg"].replace("Value error, ", ""))
-    
+
     try:
         valid = AlienContact(
             contact_id="AC_2024_001",
@@ -86,12 +84,12 @@ def main():
             signal_strength=8.5,
             duration_minutes=45,
             witness_count=1,
-            message_received= "Greetings from Zeta Reticuli",
+            message_received="Greetings from Zeta Reticuli",
             is_verified=False
         )
     except ValidationError as e:
+        print("Expected validation error:")
         print(e.errors()[0]["msg"].replace("Value error, ", ""))
-
 
 
 if __name__ == "__main__":

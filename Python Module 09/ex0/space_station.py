@@ -39,7 +39,7 @@ def main():
         print("========================================")
     except ValidationError as e:
         print("Expected validation error:")
-        print(e.errors()[0]["msg"]) 
+        print(e.errors()[0]["msg"])
     try:
         valid = SpaceStation(
             station_id="QCH1819",
