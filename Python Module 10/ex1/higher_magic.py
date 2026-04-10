@@ -40,7 +40,7 @@ def spell_sequence(spells: list[Callable]) -> Callable:
 
 
 if __name__ == "__main__":
-    print("Testing spell combiner...")
+    print("\nTesting spell combiner...")
     combined = spell_combiner(fireball, heal)
     print("Combined spell result:", ", ".join(combined("Dragon", 50)))
 
