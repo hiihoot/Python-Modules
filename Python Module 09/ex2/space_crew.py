@@ -4,7 +4,7 @@ from datetime import datetime
 from enum import Enum
 
 
-class Rank(str, Enum):
+class Rank(Enum):
     CADET = "cadet"
     COMMANDER = "commander"
     LIEUTENANT = "lieutenant"
@@ -33,7 +33,7 @@ class SpaceMission(BaseModel):
     budget_millions: float = Field(ge=1.0, le=10000.0)
 
     @model_validator(mode="after")
-    def check_rules(self):
+    def check_rules(self) -> 'SpaceMission':
         if not self.mission_id.startswith("M"):
             raise ValueError('Mission ID must start with "M"')
         there_is: bool = False

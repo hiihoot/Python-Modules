@@ -14,7 +14,7 @@ class SpaceStation(BaseModel):
     notes: Optional[str] = Field(None, max_length=200)
 
 
-def main():
+def main() -> None:
     print("\nSpace Station Data Validation")
     print("========================================")
     try:

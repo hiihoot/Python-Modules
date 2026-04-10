@@ -22,7 +22,7 @@ class AlienContact(BaseModel):
     message_received: Optional[str] = Field(None, max_length=500)
     is_verified: bool = Field(default=False)
 
-    @model_validator(mode='after')
+    @model_validator(mode='wrap')
     def rules_check(self) -> 'AlienContact':
         if not self.contact_id.startswith("AC"):
             raise ValueError('Contact ID must start with "AC" (Alien Contact)')
@@ -46,7 +46,7 @@ class AlienContact(BaseModel):
         return self
 
 
-def main():
+def main() -> None:
     print("Alien Contact Log Validation")
     print("======================================")
     try:
