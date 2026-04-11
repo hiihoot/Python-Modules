@@ -3,6 +3,7 @@ from typing import Callable
 
 def mage_counter() -> Callable[[], int]:
     count = 0
+
     def counter() -> int:
         nonlocal count
         count += 1
@@ -12,6 +13,7 @@ def mage_counter() -> Callable[[], int]:
 
 def spell_accumulator(initial_power: int) -> Callable[[int], int]:
     total = initial_power
+
     def accumulator(amount: int) -> int:
         nonlocal total
         total += amount
@@ -27,8 +29,10 @@ def enchantment_factory(enchantment_type: str) -> Callable[[str], str]:
 
 def memory_vault() -> dict[str, Callable]:
     memories = {}
+
     def store(key: str, value) -> None:
         memories[key] = value
+
     def recall(key: str):
         return memories.get(key, "Memory not found")
     return {'store': store, 'recall': recall}
@@ -57,4 +61,4 @@ if __name__ == "__main__":
     vault = memory_vault()
     vault['store']('secret', 42)
     print(f"Recall 'secret': {vault['recall']('secret')}")
-    print(f"Recall 'unknown': {vault['recall']('unknown')}")   
+    print(f"Recall 'unknown': {vault['recall']('unknown')}")

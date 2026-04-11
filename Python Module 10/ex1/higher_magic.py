@@ -25,7 +25,8 @@ def power_amplifier(base_spell: Callable, multiplier: int) -> Callable:
     return amplified_spell
 
 
-def conditional_caster(condition: Callable[[str, int], bool], spell: Callable) -> Callable:
+def conditional_caster(condition: Callable[[str, int], bool],
+                       spell: Callable) -> Callable:
     def guarded_spell(target: str, power: int) -> str:
         if condition(target, power):
             return spell(target, power)
