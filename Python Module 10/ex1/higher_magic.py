@@ -50,8 +50,7 @@ if __name__ == "__main__":
     print("Amplified:", mega_fireball("Goblin", 10))
 
     print("\nTesting conditional caster...")
-    strong_only = lambda t, p: p > 20
-    powerful_heal = conditional_caster(strong_only, heal)
+    powerful_heal = conditional_caster(lambda t, p: p > 20, heal)
     print("Weak heal:", powerful_heal("Knight", 10))
     print("Strong heal:", powerful_heal("Knight", 25))
 
@@ -59,4 +58,4 @@ if __name__ == "__main__":
     combo = spell_sequence([fireball, shield, heal])
     results = combo("Hero", 40)
     for result in results:
-        print(">", result)   
+        print(">", result)
