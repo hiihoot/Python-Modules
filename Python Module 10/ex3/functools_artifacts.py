@@ -76,19 +76,17 @@ if __name__ == "__main__":
     print(f"Fib(1): {memoized_fibonacci(1)}")
     print(f"Fib(10): {memoized_fibonacci(10)}")
     print(f"Fib(15): {memoized_fibonacci(15)}")
-    # Uncomment to see cache stats: print(memoized_fibonacci.cache_info())
 
     print("\nTesting spell dispatcher...")
     dispatcher = spell_dispatcher()
     print(dispatcher(42))
     print(dispatcher("fireball"))
     print(dispatcher([1, 2, 3]))
-    print(dispatcher(2.3))
 
     # Test partial_enchanter
     def sample_enchant(power: int, element: str, target: str) -> str:
-        return f"{element.capitalize()} \
-            enchantment of power" f"{power} on {target}"
+        return (f"{element.capitalize()}"
+                f"enchantment of power" f"{power} on {target}")
 
     enchanters = partial_enchanter(sample_enchant)
     print(f"Fire on dragon: {enchanters['fire']('dragon')}")

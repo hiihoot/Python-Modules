@@ -67,7 +67,7 @@ class MageGuild:
 
 # --- Test Execution Block ---
 if __name__ == "__main__":
-    print("Testing spell timer...")
+    print("Testing spell timer...\n")
 
     @spell_timer
     def fireball():
@@ -76,7 +76,7 @@ if __name__ == "__main__":
 
     print(f"Result: {fireball()}")
 
-    print("Testing retrying spell...")
+    print("Testing retrying spell...\n")
 
     # Simulating a failing spell
     fail_count = 0
@@ -91,10 +91,9 @@ if __name__ == "__main__":
 
     print(unstable_spell())
 
-    # Simulating a successful spell on the first try
     @retry_spell(max_attempts=3)
     def waaagh_spell():
-        return "Waaaaaaagh spelled !"
+        return "Waaaaaaagh spelled !\n"
 
     print(waaagh_spell())
 
