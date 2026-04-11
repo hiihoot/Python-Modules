@@ -2,12 +2,8 @@ from functools import reduce, partial, lru_cache, singledispatch
 from operator import add, mul, max as op_max, min as op_min
 from typing import Callable, Any, Dict, List
 
+
 def spell_reducer(spells: List[int], operation: str) -> int:
-    """
-    Reduce a list of spell powers using the specified operation.
-    Supports: 'add', 'multiply', 'max', 'min'
-    Returns 0 for empty spells.
-    """
     if not spells:
         return 0
 
@@ -59,9 +55,6 @@ def memoized_fibonacci(n: int) -> int:
 
 @singledispatch
 def spell_dispatcher() -> Callable[[Any], str]:
-    """
-    Base dispatcher for spells. Will be overridden by registered types.
-    """
     def _handler(arg):
         return "Unknown spell type"
     return _handler
