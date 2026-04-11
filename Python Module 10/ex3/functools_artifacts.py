@@ -18,10 +18,10 @@ def spell_reducer(spells: List[int], operation: str) -> int:
         raise ValueError(f"Unsupported operation: {operation}")
 
     # For max/min with single element, reduce needs initializer
-    if operation in ("max", "min"):
-        return reduce(ops[operation], spells)
+    if operation == "max":
+        return reduce(lambda a, b: a if a > b else b, spells)
     else:
-        return reduce(ops[operation], spells)
+        return reduce(lambda a, b: a if a < b else b, spells)
 
 
 def partial_enchanter(base_enchantment: Callable[[int, str, str], str]) -> Dict[str, Callable]:
